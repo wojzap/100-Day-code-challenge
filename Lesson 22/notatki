@@ -1,0 +1,20 @@
+paletka
+    poruszanie do gory i w dol
+
+pilka
+    poruszanie sie
+    odbijanie od paletki
+    odbijanie od bandy
+    wylatywanie za bande
+    powrot na srodek
+
+
+if banda
+    if heading 45
+        set heading 315
+    if heading 315
+        set heading 45
+    if heading 225
+        set heading 135
+    if heading 135
+        set heading 225
