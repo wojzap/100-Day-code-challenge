@@ -1,0 +1,22 @@
+1. fill google sheet with IATA codes
+IATA_codes = {"city": "code"}
+- def find_city_code:
+    send query with the name of city, add code to dict
+fill google sheet with every data from iata codes
+
+
+
+2. find cheapest flights from tomorrow to 6 months later for all cities
+
+
+3. send sms if the price is lower than price in google sheet
+
+
+
+4. sms should include:
+- departure airport AITA code
+- destination airport AITA code
+- departure City
+- destination city
+- flight price
+- flight dates
