@@ -2,7 +2,7 @@ import requests
 from flight_data import FlightData
 
 API_URL = "https://api.tequila.kiwi.com/"
-API_KEY = "HEqGICN5jnM9C40j2d3bUZqlMObaIv-R"
+API_KEY = "YOUR TEQUILA API KEY"
 
 class FlightSearch:
     #This class is responsible for talking to the Flight Search API.
@@ -43,14 +43,20 @@ class FlightSearch:
         }
 
         response = requests.get(url="https://api.tequila.kiwi.com/v2/search", params=query, headers=headers)
-        data = response.json()
-        flight_data = FlightData(departure_city=data["data"][0]["cityFrom"],
-                                 destination_city=data["data"][0]["cityTo"],
-                                 departure_city_aita_code=data["data"][0]["cityCodeFrom"],
-                                 destination_city_aita_code=data["data"][0]["cityCodeTo"],
-                                 price=data["data"][0]["price"],
-                                 flight_date=data["data"][0]["route"][0]["local_departure"].split("T")[0],
-                                 return_date=data["data"][0]["route"][1]["local_departure"].split("T")[0])
+
+        try:
+            data = response.json()["data"][0]
+        except IndexError:
+            print(f"No flights found for {destination_city_code}")
+            return None
+
+        flight_data = FlightData(departure_city=data["cityFrom"],
+                                 destination_city=data["cityTo"],
+                                 departure_airport=data["flyFrom"],
+                                 destination_airport=data["flyTo"],
+                                 price=data["price"],
+                                 flight_date=data["route"][0]["local_departure"].split("T")[0],
+                                 return_date=data["route"][1]["local_departure"].split("T")[0])
 
         return flight_data
 

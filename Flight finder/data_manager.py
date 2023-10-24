@@ -1,6 +1,6 @@
 import requests
 
-SHEETY_API = "https://api.sheety.co/d3889b37b31752549849bbc26d475eb1/kopiaFlightDeals/prices"
+SHEETY_API = "YOUR SHEETY API"
 
 class DataManager:
     #This class is responsible for talking to the Google Sheet.
